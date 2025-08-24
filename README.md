@@ -114,17 +114,10 @@ The video covers:
 1. Project overview
 2. Code walkthrough
 3. Demo of features (login, add/edit/delete, upload, listing)
-4. Running via Docker
 
 ---
 
-## 📌 Notes for Recruiter
 
-* ✅ This project demonstrates **Flask fundamentals, SQLAlchemy ORM, authentication, CRUD, file handling, and Docker**.
-* ✅ The code is **beginner-friendly**, easy to explain in an interview.
-* ✅ Both repository and video are shared as per requirements.
-
----
 
 ## 👨‍💻 Author
 
@@ -134,4 +127,3 @@ The video covers:
 
 ---
 
-Would you like me to also prepare a **script/outline for your video explanation** (so you can record confidently and hit all the points the recruiter expects)?
