@@ -1,0 +1,29 @@
+{% extends "layout.html" %} 
+
+{% block content %}
+<h2>Bulk Upload Inventory</h2>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Upload a CSV or Excel File</h5>
+        <p class="card-text">
+            The file must contain the following columns:
+            <ul>
+                <li><code>model_name</code></li>
+                <li><code>brand</code></li>
+                <li><code>base_price</code></li>
+                <li><code>stock_quantity</code></li>
+                <li><code>condition</code></li>
+                <li><code>reserved_for_b2b</code> (optional)</li>
+                <li><code>specifications</code> (optional)</li>
+            </ul>
+        </p>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <input class="form-control" type="file" name="file" accept=".csv, .xlsx" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Upload</button>
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Inventory</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

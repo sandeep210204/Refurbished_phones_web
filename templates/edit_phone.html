@@ -1,0 +1,67 @@
+{% extends "layout.html" %} 
+
+{% block content %}
+<h2>Edit Phone: {{ phone.model_name }}</h2>
+<form method="POST">
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label>Model Name</label>
+            <input type="text" class="form-control" name="model_name" value="{{ phone.model_name }}" required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label>Brand</label>
+            <input type="text" class="form-control" name="brand" value="{{ phone.brand }}" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label>Base Price ($)</label>
+            <input type="number" step="0.01" class="form-control" name="base_price" value="{{ phone.base_price }}" required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label>Stock Quantity</label>
+            <input type="number" class="form-control" name="stock_quantity" value="{{ phone.stock_quantity }}" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label>Reserved for B2B</label>
+            <input type="number" class="form-control" name="reserved_for_b2b" value="{{ phone.reserved_for_b2b }}">
+            <small class="form-text text-muted">Units reserved for direct/B2B sales (won’t be listed online).</small>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label>Specifications</label>
+        <input type="text" class="form-control" name="specifications" value="{{ phone.specifications }}">
+    </div>
+    <div class="mb-3">
+        <label>Condition</label>
+        <select class="form-select" name="condition" required>
+            <option value="New" {% if phone.condition == 'New' %}selected{% endif %}>New</option>
+            <option value="Excellent" {% if phone.condition == 'Excellent' %}selected{% endif %}>Excellent</option>
+            <option value="Good" {% if phone.condition == 'Good' %}selected{% endif %}>Good</option>
+            <option value="Usable" {% if phone.condition == 'Usable' %}selected{% endif %}>Usable</option>
+            <option value="Scrap" {% if phone.condition == 'Scrap' %}selected{% endif %}>Scrap</option>
+        </select>
+    </div>
+    <hr>
+    <h5>Manual Price Overrides</h5>
+    <p class="text-muted">The application automatically calculates prices, but you can override them here.</p>
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <label>Price on X ($)</label>
+            <input type="number" step="0.01" class="form-control" name="price_on_x" value="{{ '%.2f'|format(phone.price_on_x) }}">
+        </div>
+        <div class="col-md-4 mb-3">
+            <label>Price on Y ($)</label>
+            <input type="number" step="0.01" class="form-control" name="price_on_y" value="{{ '%.2f'|format(phone.price_on_y) }}">
+        </div>
+        <div class="col-md-4 mb-3">
+            <label>Price on Z ($)</label>
+            <input type="number" step="0.01" class="form-control" name="price_on_z" value="{{ '%.2f'|format(phone.price_on_z) }}">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Update Phone</button>
+    <a href="{{ url_for('index') }}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

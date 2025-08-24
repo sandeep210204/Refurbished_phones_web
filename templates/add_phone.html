@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Add a New Phone</h2>
+<form method="POST">
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="model_name" class="form-label">Model Name</label>
+            <input type="text" class="form-control" id="model_name" name="model_name" required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="brand" class="form-label">Brand</label>
+            <input type="text" class="form-control" id="brand" name="brand" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="base_price" class="form-label">Base Price ($)</label>
+            <input type="number" step="0.01" class="form-control" id="base_price" name="base_price" required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="stock_quantity" class="form-label">Stock Quantity</label>
+            <input type="number" class="form-control" id="stock_quantity" name="stock_quantity" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="reserved_for_b2b" class="form-label">Reserved for B2B</label>
+            <input type="number" class="form-control" id="reserved_for_b2b" name="reserved_for_b2b" value="0">
+            <small class="form-text text-muted">Units reserved for direct/B2B sales (won’t be listed online).</small>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="specifications" class="form-label">Specifications (e.g., 128GB, Blue)</label>
+        <input type="text" class="form-control" id="specifications" name="specifications">
+    </div>
+    <div class="mb-3">
+        <label for="condition" class="form-label">Condition</label>
+        <select class="form-select" id="condition" name="condition" required>
+            <option value="New">New</option>
+            <option value="Excellent">Excellent</option>
+            <option value="Good">Good</option>
+            <option value="Usable">Usable</option>
+            <option value="Scrap">Scrap</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Phone</button>
+    <a href="{{ url_for('index') }}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

@@ -1,0 +1,6 @@
+model_name,brand,base_price,stock_quantity,condition,specifications
+iPhone 12,Apple,450,15,Excellent,"128GB, Blue"
+Galaxy S21,Samsung,400,10,Good,"256GB, Phantom Gray"
+Pixel 5,Google,300,20,New,"128GB, Just Black"
+OnePlus 8T,OnePlus,350,5,Usable,"256GB, Aquamarine Green"
+iPhone X,Apple,200,0,Scrap,"64GB, Space Gray"
