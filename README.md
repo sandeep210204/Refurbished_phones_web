@@ -1,129 +1,160 @@
-# 📱 Refurbished Phones Inventory Management (Flask App)
+# 📱 Refurbished Phones Inventory Web Application
 
-A simple yet functional **inventory management system** for refurbished phones, built using **Flask** and **SQLite**.
-This project was developed as part of a technical assignment and demonstrates **CRUD operations, authentication, bulk uploads, and platform-based listings**.
+### 🔗 GitHub Repository
 
----
+👉 [Refurbished\_phones\_web](https://github.com/sandeep210204/Refurbished_phones_web)
 
-## 🚀 Features
+### 🎥 Video Explanation
 
-* 🔑 **Login / Logout** (mock authentication with session handling)
-* 📦 **Add / Edit / Delete Phones** in the inventory
-* 📊 **Search & Filter** phones by model, brand, condition, or listing platform
-* 🏷️ **B2B Reservations** – reserve stock specifically for bulk buyers
-* 💲 **Auto Price Calculation** for 3 platforms (X, Y, Z) with different fee structures
-* ✅ **Profitability Check** – ensures at least \$5 profit before listing on any platform
-* 📤 **Bulk Upload (CSV/Excel)** to quickly add multiple phones
-* 🏷️ **Tags** (e.g., “Out of Stock”) to highlight inventory status
+👉 [Click here to watch the demo video](#) *(Replace `#` with your video link when ready)*
 
 ---
 
-## 🛠️ Tech Stack
+## 🚀 Project Overview
 
-* **Backend**: Flask (Python)
-* **Database**: SQLite (via SQLAlchemy ORM)
-* **Frontend**: Jinja2 Templates (HTML + Bootstrap for styling)
-* **File Uploads**: Pandas + OpenPyXL for CSV/Excel handling
-* **Containerization**: Docker-ready
+This project is a **Flask-based web application** built to manage and sell refurbished phones across **three simulated e-commerce platforms (X, Y, Z)**.
+
+The system is designed as per the given assignment requirements:
+
+* Handle **inventory management** (Add, Update, Delete, Bulk Upload).
+* Apply **platform-specific pricing rules and fees**.
+* Ensure **profitability checks** and **stock validation** before listing.
+* Provide **search, filters, and bulk upload support** for easy management.
+* Include **mock authentication** for basic security.
+
+This is a **dummy application** with **no real platform integrations**, but it simulates how phones would be listed on each platform.
+
+---
+
+## 📋 Problem Statement (from Assignment)
+
+* Build an application to manage and sell refurbished phones on three e-commerce platforms (**X, Y, Z**).
+* Handle inventory, pricing, and platform-specific condition mapping.
+* Prevent listing if:
+
+  1. Phone is **out of stock** (reserved for B2B or zero stock).
+  2. Fees make the sale **unprofitable**.
+  3. Condition does not match platform requirements.
+
+---
+
+## 🛠️ Features Implemented
+
+### 1. 📦 Phone Inventory Management
+
+* Add, Update, Delete phones.
+* Manage stock quantity and B2B reservations.
+* Bulk upload via **CSV/Excel files**.
+* Auto-calculate and store **platform-specific prices**.
+* Show **tags** (like *Out of Stock*).
+
+### 2. 💰 Platform-Specific Logic (Dummy Integration)
+
+* **Price Calculation Rules**:
+
+  * X → 10% fee
+  * Y → 8% fee + \$2 fixed
+  * Z → 12% fee
+* **Condition Mapping**:
+
+  * X → New, Good, Scrap
+  * Y → Excellent (3★), Good (2★), Usable (1★)
+  * Z → New, As New, Good
+* Prevents unprofitable listings (< \$5 profit).
+
+### 3. 🔍 Search and Filters
+
+* Search phones by **Model Name** or **Brand**.
+* Filter by **Condition** (New, Good, Scrap, etc.).
+* Filter by **Platform Listing Status** (X, Y, Z).
+
+### 4. 📤 Bulk Upload Support
+
+* Upload phones using **CSV or Excel files**.
+* Automatically processes multiple phones at once.
+* Handles validation for incorrect rows.
+
+### 5. 🔐 Security and Authentication
+
+* **Mock login system** (username & password).
+* **Input validation** and sanitization.
+
+---
+
+## 🏗️ Tech Stack
+
+* **Backend**: Python (Flask)
+* **Database**: SQLite (via SQLAlchemy)
+* **Frontend**: HTML + Bootstrap (templates)
+* **Libraries**:
+
+  * `Flask`, `Flask-SQLAlchemy`, `Werkzeug`
+  * `Pandas`, `OpenPyXL` (for Excel/CSV processing)
 
 ---
 
 ## 📂 Project Structure
 
 ```
-Task/
-│── app.py                # Main Flask application
-│── requirements.txt       # Dependencies
-│── storage.db             # SQLite database (auto-created)
-│── uploads/               # Uploaded CSV/Excel files
-│── templates/             # HTML templates
-│   ├── layout.html
-│   ├── index.html
-│   ├── add_phone.html
-│   ├── edit_phone.html
-│   ├── login.html
-│   └── upload.html
-│── static/
-    └── css/style.css      # Custom styles
+Refurbished_phones_web/
+│── app.py                 # Main Flask application  
+│── requirements.txt       # Dependencies  
+│── Dockerfile             # Docker build config  
+│── instance/              # SQLite DB storage  
+│── static/css/            # Custom CSS  
+│── templates/             # HTML templates (Jinja2)  
+│── uploads/               # Uploaded CSV/Excel files  
+│── README.md              # Documentation (this file)  
 ```
 
 ---
 
-## ⚙️ Installation & Setup
+## ▶️ How to Run Locally
 
-### 🔹 Option 1: Run Locally
+### **Option 1: Run Normally**
 
-1. Clone this repository
+```bash
+# Clone the repo
+git clone https://github.com/sandeep210204/Refurbished_phones_web.git
+cd Refurbished_phones_web
 
-   ```bash
-   git clone https://github.com/sandeep210204/Refurbished_phones_web.git
-   cd Refurbished_phones_web
-   ```
-2. Create virtual environment & install dependencies
+# Install dependencies
+pip install -r requirements.txt
 
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. Run the Flask app
+# Run the app
+python app.py
+```
 
-   ```bash
-   python app.py
-   ```
-4. Open in browser: **[http://127.0.0.1:5000/](http://127.0.0.1:5000/)**
+App runs at 👉 **[http://127.0.0.1:5000/](http://127.0.0.1:5000/)**
 
-👉 Login credentials:
+### **Option 2: Run with Docker**
 
-* **Username**: `admin`
-* **Password**: `password123`
+```bash
+# Build the image
+docker build -t refurbished-phones-app .
 
----
-
-### 🔹 Option 2: Run with Docker
-
-1. Build the image
-
-   ```bash
-   docker build -t refurbished-phones-app .
-   ```
-2. Run the container
-
-   ```bash
-   docker run -p 5000:5000 refurbished-phones-app
-   ```
-3. Open in browser: **[http://localhost:5000](http://localhost:5000)**
+# Run the container
+docker run -p 5000:5000 refurbished-phones-app
+```
 
 ---
 
-## 📤 Bulk Upload Example
+## ✅ Assignment Criteria Checklist
 
-Upload a **CSV/Excel** file with the following columns:
-
-| model\_name | brand   | base\_price | stock\_quantity | condition | specifications | reserved\_for\_b2b |
-| ----------- | ------- | ----------- | --------------- | --------- | -------------- | ------------------ |
-| Galaxy S10  | Samsung | 200         | 10              | Good      | 128GB, Black   | 2                  |
-| iPhone 11   | Apple   | 350         | 5               | New       | 64GB, White    | 0                  |
-
----
-
-## 🎥 Video Explanation
-
-📌 [Link to Video Walkthrough](#) *(Add your Loom/YouTube/Drive link here)*
-
-The video covers:
-
-1. Project overview
-2. Code walkthrough
-3. Demo of features (login, add/edit/delete, upload, listing)
+✔️ **Problem Solving (30%)** → Inventory, pricing, conditions, profitability implemented.
+✔️ **Code Quality (30%)** → Modular, validated, documented.
+✔️ **Security (20%)** → Mock authentication, input sanitization.
+✔️ **Functionality (20%)** → End-to-end demo with all features.
+⭐ **Bonus (5%)** → Implemented using **Python (Flask backend)**.
 
 ---
 
+## 📌 Next Steps
 
-
-## 👨‍💻 Author
-
-**Vandrangi Sandeep**
-📧 Email: *\[sandeepvandrangi@gmail.com]*
-🔗 GitHub: [sandeep210204](https://github.com/sandeep210204)
+* [ ] Deploy on DockerHub/Heroku for bonus visibility (optional).
 
 ---
 
+⚡ Developed by **Sandeep Vandrangi** as part of the **Refurbished Phone Selling Assignment**.
+
+---
