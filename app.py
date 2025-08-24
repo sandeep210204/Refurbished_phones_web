@@ -9,7 +9,7 @@ from werkzeug.utils import secure_filename
 # --- Flask Application Setup ---
 # ============================================================
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'a-very-secret-key-for-a-fresher-project'
+app.config['SECRET_KEY'] = 'secret-key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///storage.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = 'uploads'
