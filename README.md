@@ -6,7 +6,7 @@
 
 ### 🎥 Video Explanation
 
-👉 [Click here to watch the demo video](#) *(Replace `#` with your video link when ready)*
+👉 [Click here to watch the demo video](https://youtu.be/_gWluVcHdtI?feature=shared)
 
 ---
 
